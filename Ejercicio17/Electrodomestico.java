@@ -20,7 +20,7 @@ public class Electrodomestico{
     public Electrodomestico(int precio, String color, char consumo, int peso) {
         System.out.println("El consumo es de "+comprobarConsumoEnergetico(consumo));
         System.out.println("El color es "+comprobarColor(color));
-        System.out.println("El precio total es: "+ precioTotal(precio, consumo, peso)+"$");
+        System.out.println("El precio total es: "+ precioTotal(precio, consumo, peso)+"€");
     }
 
     /**
@@ -30,7 +30,7 @@ public class Electrodomestico{
      */
 
     protected char comprobarConsumoEnergetico(char letra){
-        if(letras.contains(letra)){
+            if(letras.contains(letra)){
             return letra;
         };
         return this.consumo;
@@ -67,8 +67,8 @@ public class Electrodomestico{
         if(consumo == 'f') total += 10;
 
         if(peso < 20) total += 10;
-        if(peso >= 20 && this.peso < 50) total += 50;
-        if(peso >= 50 && this.peso < 80) total += 80;
+        if(peso >= 20 && peso < 50) total += 50;
+        if(peso >= 50 && peso < 80) total += 80;
         if(peso >= 80) total += 100;
 
         return total;
@@ -85,8 +85,8 @@ public class Electrodomestico{
         int total = this.precio_base + precio;
 
         if(peso < 20) total += 10;
-        if(peso >= 20 && this.peso < 50) total += 50;
-        if(peso >= 50 && this.peso < 80) total += 80;
+        if(peso >= 20 && peso < 50) total += 50;
+        if(peso >= 50 && peso < 80) total += 80;
         if(peso >= 80) total += 100;
 
         return total;
