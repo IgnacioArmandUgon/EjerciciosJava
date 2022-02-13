@@ -1,24 +1,31 @@
 package Ejercicios.Ejercicio17;
 
 public class Television extends Electrodomestico {
-    private final int resolucion = 20;
-    private final boolean sintonizadorTDT = false;
+    private int resolucion;
+    private boolean sintonizadorTDT;
 
-    public Television(){}
+    public Television(){
+        super();
+        this.resolucion = 20;
+        this.sintonizadorTDT = false;
+    }
 
     public Television(int precio, int peso){
         super(precio,peso);
+        this.resolucion = 20;
+        this.sintonizadorTDT = false;
    }
    public Television(int resolucion, boolean sintonizadorTDT, int precio, String color, char consumo, int peso){
-       System.out.println("El consumo es de "+super.comprobarConsumoEnergetico(consumo));
-       System.out.println("El color es "+super.comprobarColor(color));
-       System.out.println("El precio total es de "+precioTotal(precio ,resolucion,sintonizadorTDT, peso, consumo)+"€");
+        super(precio, color, consumo, peso);
+        this.precio = precioTotal();
+        this.resolucion = resolucion;
+        this.sintonizadorTDT = sintonizadorTDT;
    }
 
-    private int precioTotal(int precio ,int resolucion, boolean sintonizadorTDT, int peso, char consumo) {
-        int total = super.precioTotal(precio, peso) + precio;
-        if(resolucion>40)total += (total/100)*30;
-        if(sintonizadorTDT)total += 50;
+    public int precioTotal() {
+        int total = super.precioTotal();
+        if(this.sintonizadorTDT)total = total + 50;
+        if(this.resolucion>40)total = total + (total/100)*30;
         return total;
     }
 

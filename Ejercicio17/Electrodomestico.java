@@ -4,23 +4,33 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Electrodomestico{
-    protected final int precio_base = 100;
-    protected final String color = "blanco";
-    protected final char consumo = 'f';
-    protected final int peso = 5;
+    protected int precio;
+    protected String color;
+    protected char consumo;
+    protected int peso;
     protected final List<String> colores = Arrays.asList("blancos", "negro", "rojo", "azul", "gris");
     protected final List<Character> letras = Arrays.asList('a','b','c','d','e','f');
 
-    public Electrodomestico(){};
+    public Electrodomestico(){
+        this.precio = 100;
+        this.color = "Blanco";
+        this.consumo = 'f';
+        this.peso = 5;
+    };
 
     public Electrodomestico(int precio, int peso){
-        System.out.println("El precio total es: "+ precioTotal(precio, peso)+"$");
+        this.precio = precio;
+        this.color = "Blanco";
+        this.consumo = 'f';
+        this.peso = peso;
+
     };
 
     public Electrodomestico(int precio, String color, char consumo, int peso) {
-        System.out.println("El consumo es de "+comprobarConsumoEnergetico(consumo));
-        System.out.println("El color es "+comprobarColor(color));
-        System.out.println("El precio total es: "+ precioTotal(precio, consumo, peso)+"€");
+        this.precio = precio;
+        this.color = comprobarColor(color);
+        this.consumo = comprobarConsumoEnergetico(consumo);
+        this.peso = peso;
     }
 
     /**
@@ -52,13 +62,11 @@ public class Electrodomestico{
     /**
      * Este metodo toma como parametros el consumo y el peso del electrodomestico y
      * en base a eso calcula su precio total
-     * @param consumo
-     * @param peso
      * @return
      */
 
-    protected int precioTotal(int precio, char consumo, int peso) {
-        int total = this.precio_base + precio;
+    protected int precioTotal(/*int precio, char consumo, int peso*/) {
+        int total = precio;
         if(consumo == 'a') total += 100;
         if(consumo == 'b') total += 80;
         if(consumo == 'c') total += 60;
@@ -74,27 +82,9 @@ public class Electrodomestico{
         return total;
     }
 
-    /**
-     * Este metodo toma como parametros el peso del electrodomestico y
-     * en base a eso calcula su precio total
-     * @param peso
-     * @return
-     */
-
-    protected int precioTotal(int precio, int peso) {
-        int total = this.precio_base + precio;
-
-        if(peso < 20) total += 10;
-        if(peso >= 20 && peso < 50) total += 50;
-        if(peso >= 50 && peso < 80) total += 80;
-        if(peso >= 80) total += 100;
-
-        return total;
-    }
-
     /* Métodos Getters y Setters*/
 
-    public int getPrecio_base() {return precio_base;}
+    public int getPrecio() {return precio;}
 
     public String getColor() {return color;}
 

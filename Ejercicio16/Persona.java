@@ -5,30 +5,39 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Persona {
-    private String nombre = "";
-    private int edad = 0;
+    private String nombre;
+    private int edad;
     private String DNI;
-    private String sexo = "Hombre";
-    private int peso = 0;
-    private double altura = 0;
+    private String sexo;
+    private int peso;
+    private double altura;
 
-    public Persona(){}
+    public Persona(){
+        this.nombre = "";
+        this.edad = 0;
+        this.DNI = generarDNI();
+        this.sexo = "hombre";
+        this.peso = 0;
+        this.altura = 0;
+    }
 
 
     public Persona(String nombre, int edad, String sexo) {
         this.nombre = nombre;
         this.edad = edad;
-        comprobarSexo(sexo);
         this.DNI = generarDNI();
+        this.sexo = comprobarSexo(sexo);
+        this.peso = 0;
+        this.altura = 0;
     }
 
     public Persona(String nombre, int edad,String sexo, int peso, double altura) {
         this.nombre = nombre;
         this.edad = edad;
+        this.DNI = generarDNI();
+        this.sexo = comprobarSexo(sexo);
         this.peso = peso;
         this.altura = altura;
-        this.DNI = generarDNI();
-        comprobarSexo(sexo);
     }
 
     /**
@@ -51,14 +60,12 @@ public class Persona {
         return edad>= 18;
     }
 
-    public void comprobarSexo(String sexo){
-        if(sexo.equalsIgnoreCase("Hombre")){
-            this.sexo = "Hombre";
-        }
+    public String comprobarSexo(String sexo){
+
         if(sexo.equalsIgnoreCase("Mujer")){
-            this.sexo = "Mujer";
+            return "Mujer";
         }
-        this.sexo =  "Hombre";
+        return "Hombre";
     }
 
     /**
